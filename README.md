@@ -61,7 +61,7 @@ Example:
 ```javascript
 const tokens = ["sub", "3", "sum", "2", "4", "5"];
 ```
-Expected output:
+Expected tree:
 ```
   sub
  /   \
@@ -78,15 +78,15 @@ Provided grammar used to parse input token:
 ```
 
 ### (5 pts) | Specification: Evaluator
-- [ ] Visit each node.
-  - [ ] Return corresponding value (if node is number type);
-  - [ ] Perform operation (if node is operation type).
+- [x] Visit each node.
+  - [x] Return corresponding value (if node is number type);
+  - [x] Perform operation (if node is operation type).
 
 ### (5 pts) | Specification: Code Generator
-- [ ] Translate input into another language.
+- [x] Translate input into another language.
 
 ### (5 pts) | Specifiction: Interpreter
-- [ ] Perform instructions written in another language without requiring previous compilation.
+- [x] Perform instructions written in another language without requiring previous compilation.
 
 ### (5 pts) | Specification: Compiler
 - [ ] Perform instructions written in a compiled language.
