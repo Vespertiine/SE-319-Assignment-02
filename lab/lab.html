@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <script src="calculator.js"></script>
+  <script src="BinaryCalculator.js"></script>
+  <script src="parselex.js"></script>
+  <meta charset="utf-8" />
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+  <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+  <style>
+    .pb-calc-container {
+      font-family: Lato;
+    }
+
+    .pb-calc-btn {
+      border: none;
+      background: none;
+      font-size: 20px;
+    }
+
+    .pb-calc-btn:hover {
+      background: blue;
+      color: white;
+    }
+
+    .pb-calc-panel-body {
+      padding-bottom: 0;
+      text-align: center;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="col-md-12" id="task01">
+    <div class="col-md-6">
+      <div class="container pb-calc-container">
+        <div class="row">
+          <div class="col-md-3 col-md-offset-5">
+            <div class="panel panel-info">
+              <div class="panel-heading">
+                <label>Decimal Calculator</label>
+              </div>
+              <div class="panel-body pb-calc-panel-body">
+                <input type="text" id="dcalc_txt" class="form-control" placeholder="2 + 2 = 4">
+
+                <hr class="pb-calc-hr">
+                <div class="row" style="background: #b3ffff;">
+                  <div class="col-md-12">
+                    <div class="row" style="padding-bottom: 5px;">
+                      <div class="col-xs-3 col-sm-3 col-md-3">
+                        <button class="btn pb-calc-btn" id="dcalc_num7">7</button>
+                      </div>
+                      <div class="col-xs-3 col-sm-3 col-md-3">
+                        <button class="btn pb-calc-btn" id="dcalc_num8">8</button>
+                      </div>
+                      <div class="col-xs-3 col-sm-3 col-md-3">
+                        <button class="btn pb-calc-btn" id="dcalc_num9">9</button>
+                      </div>
+                      <div class="col-xs-3 col-sm-3 col-md-3">
+                        <button class="btn pb-calc-btn" id="dcalc_symSum">+</button>
+                      </div>
+                    </div>
+                    <div class="row" style="padding-bottom: 5px;">
+                      <div class="col-xs-3 col-sm-3 col-md-3">
+                        <button class="btn pb-calc-btn" id="dcalc_num4">4</button>
+                      </div>
+                      <div class="col-xs-3 col-sm-3 col-md-3">
+                        <button class="btn pb-calc-btn" id="dcalc_num5">5</button>
+                      </div>
+                      <div class="col-xs-3 col-sm-3 col-md-3">
+                        <button class="btn pb-calc-btn" id="dcalc_num6">6</button>
+                      </div>
+                      <div class="col-xs-3 col-sm-3 col-md-3">
+                        <button class="btn pb-calc-btn" id="dcalc_symSub">-</button>
+                      </div>
+                    </div>
+                    <div class="row" style="padding-bottom: 5px;">
+                      <div class="col-xs-3 col-sm-3 col-md-3">
+                        <button class="btn pb-calc-btn" id="dcalc_num1">1</button>
+                      </div>
+                      <div class="col-xs-3 col-sm-3 col-md-3">
+                        <button class="btn pb-calc-btn" id="dcalc_num2">2</button>
+                      </div>
+                      <div class="col-xs-3 col-sm-3 col-md-3">
+                        <button class="btn pb-calc-btn" id="dcalc_num3">3</button>
+                      </div>
+                      <div class="col-xs-3 col-sm-3 col-md-3">
+                        <button class="btn pb-calc-btn" id="dcalc_symMul">*</button>
+                      </div>
+                    </div>
+                    <div class="row" style="padding-bottom: 5px;">
+                      <div class="col-xs-3 col-sm-3 col-md-3">
+                        <button class="btn pb-calc-btn" id="dcalc_num0">0</button>
+                      </div>
+                      <div class="col-xs-3 col-sm-3 col-md-3">
+                        <button class="btn pb-calc-btn" id="dcalc_symDot">.</button>
+                      </div>
+                      <div class="col-xs-3 col-sm-3 col-md-3">
+                        <button class="btn pb-calc-btn" id="dcalc_opEq">=</button>
+                      </div>
+                      <div class="col-xs-3 col-sm-3 col-md-3">
+                        <button class="btn pb-calc-btn" id="dcalc_symDiv">/</button>
+                      </div>
+                    </div>
+                    <div class="row" style="padding-bottom: 5px;">
+                      <div class="col-xs-3 col-sm-3 col-md-3">
+                        <button class="btn pb-calc-btn" id="dcalc_opC">C</button>
+                      </div>
+                      <div class="col-xs-3 col-sm-3 col-md-3">
+                        <button class="btn pb-calc-btn" id="dcalc_opMR">MR</button>
+                      </div>
+                      <div class="col-xs-3 col-sm-3 col-md-3">
+                        <button class="btn pb-calc-btn" id="dcalc_opMSub">M-</button>
+                      </div>
+                      <div class="col-xs-3 col-sm-3 col-md-3">
+                        <button class="btn pb-calc-btn" id="dcalc_opMSum">M+</button>
+                      </div>
+                    </div>
+                    <div class="row" style="padding-bottom: 5px;">
+                      <div class="col-xs-3 col-sm-3 col-md-3">
+                        <button class="btn pb-calc-btn" id="dcalc_opMC">MC</button>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-6">
+      <div class="container pb-calc-container">
+        <div class="row">
+          <div class="col-md-3 col-md-offset-3">
+            <div class="panel panel-info">
+              <div class="panel-heading">
+                <label>Binary Calculator</label>
+              </div>
+              <div class="panel-body pb-calc-panel-body">
+                <input type="text" class="form-control" id="bcalc_txt" placeholder="2 + 2 = 100">
+
+                <hr class="pb-calc-hr">
+                <div class="row" style="background: #b3ffff;">
+                  <div class="col-md-12">
+                    <div class="row" style="padding-bottom: 5px;">
+                      <div class="col-xs-3 col-sm-3 col-md-3">
+                        <button class="btn pb-calc-btn" id="bcalc_symSum">+</button>
+                      </div>
+                    </div>
+                    <div class="row" style="padding-bottom: 5px;">
+                      <div class="col-xs-3 col-sm-3 col-md-3">
+                        <button class="btn pb-calc-btn" id="bcalc_num0">0</button>
+                      </div>
+                      <div class="col-xs-3 col-sm-3 col-md-3">
+                        <button class="btn pb-calc-btn" id="bcalc_num1">1</button>
+                      </div>
+                      <div class="col-xs-3 col-sm-3 col-md-3">
+                        <button class="btn pb-calc-btn" id="bcalc_symSub">-</button>
+                      </div>
+                      <div class="col-xs-3 col-sm-3 col-md-3">
+                        <button class="btn pb-calc-btn" id="bcalc_symMul">*</button>
+                      </div>
+                    </div>
+                    <div class="row" style="padding-bottom: 5px;">
+                      <div class="col-xs-3 col-sm-3 col-md-3">
+                        <button class="btn pb-calc-btn" id="bcalc_symMul">*</button>
+                      </div>
+                      <div class="col-xs-3 col-sm-3 col-md-3">
+                        <button class="btn pb-calc-btn" id="bcalc_symDot">.</button>
+                      </div>
+                      <div class="col-xs-3 col-sm-3 col-md-3">
+                        <button class="btn pb-calc-btn" id="bcalc_opEq">=</button>
+                      </div>
+                      <div class="col-xs-3 col-sm-3 col-md-3">
+                        <button class="btn pb-calc-btn" id="bcalc_symDiv">/</button>
+                      </div>
+                    </div>
+                    <div class="row" style="padding-bottom: 5px;">
+                      <div class="col-xs-3 col-sm-3 col-md-3">
+                        <button class="btn pb-calc-btn" id="bcalc_opC">C</button>
+                      </div>
+                      <div class="col-xs-3 col-sm-3 col-md-3">
+                        <button class="btn pb-calc-btn" id="bcalc_symLS"><<</button>
+                      </div>
+                      <div class="col-xs-3 col-sm-3 col-md-3">
+                        <button class="btn pb-calc-btn" id="bcalc_symRS">>></button>
+                      </div>
+                      <div class="col-xs-3 col-sm-3 col-md-3">
+                        <button class="btn pb-calc-btn" id="bcalc_symMod">%</button>
+                      </div>
+                    </div>
+                    <div class="row" style="padding-bottom: 5px;">
+                      <div class="col-xs-3 col-sm-3 col-md-3">
+                        <button class="btn pb-calc-btn" id="bcalc_symOr">|</button>
+                      </div>
+                      <div class="col-xs-3 col-sm-3 col-md-3">
+                        <button class="btn pb-calc-btn" id="bcalc_symAnd">&</button>
+                      </div>
+                      <div class="col-xs-3 col-sm-3 col-md-3">
+                        <button class="btn pb-calc-btn" id="bcalc_symNot">~</button>
+                      </div>
+                    </div>
+                    <div class="row" style="padding-bottom: 5px;">
+                      <div class="col-xs-3 col-sm-3 col-md-3">
+                        <button class="btn pb-calc-btn" id="bcalc_opMC">MC</button>
+                      </div>
+                      <div class="col-xs-3 col-sm-3 col-md-3">
+                        <button class="btn pb-calc-btn" id="bcalc_opMR">MR</button>
+                      </div>
+                      <div class="col-xs-3 col-sm-3 col-md-3">
+                        <button class="btn pb-calc-btn" id="bcalc_opMSub">M-</button>
+                      </div>
+                      <div class="col-xs-3 col-sm-3 col-md-3">
+                        <button class="btn pb-calc-btn" id="bcalc_opMSum">M+</button>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="col-md-12" id="task02">
+    <hr/>
+    <div class="container">
+      <form class="form-horizontal" id="inputForm">
+        <div class="form-group">
+          <label for="parserinput">Task 02 Input</label>
+          <input type="text" value="" class="form-control" id="parserinput"> <br/>
+        </div>
+        <div class="form-group">
+          <button type="submit" class="btn btn-default">Evaluate</button>
+        </div>
+      </form>
+      <br/>
+      <div id="parseroutput">
+      </div>
+    </div>
+  </div>
+</body>
+
+</html>

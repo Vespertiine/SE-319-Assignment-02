@@ -25,15 +25,15 @@ Create two calculators based on the provided code in [ExerciseHelp](./doc/prof-h
 
 ### Checklist
 - [ ] File names ``calculator.js`` and ``calculatorBinary.js``.
-- [ ] Relative paths in all files.
-- [ ] Semantic naming of objects and JavaScript functions.
-- [ ] (2 pts/display, 4 pts) | Display both calculators correctly.
-- [ ] (3 pts) | MR Operation: Show memory value on screen.
+- [x] Relative paths in all files.
+- [x] Semantic naming of objects and JavaScript functions.
+- [x] (2 pts/display, 4 pts) | Display both calculators correctly.
+- [x] (3 pts) | MR Operation: Show memory value on screen.
 - [ ] (3 pts) | MC Operation: Clear memory value.
 - [ ] (2 pts) | M+ Operation: Display gets added to memory.
 - [ ] (2 pts) | M- Operation: Display gets subtracted from memory.
 - [ ] (2 pts) | C Operation: Clear screen value and last operation ([=] will not repeat op.)
-- [ ] Variables should not be singletons.
+- [x] Variables should not be singletons.
 
 ### Submission
 - Verify function in Chrome browser.
