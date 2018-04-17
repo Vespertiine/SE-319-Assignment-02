@@ -18,7 +18,8 @@ DecimalCalculator.bindFields = () => {
     keyOpMC: document.getElementById('dcalc_opMC'),
     keyOpMR: document.getElementById('dcalc_opMR'),
     keyOpMSub: document.getElementById('dcalc_opMSub'),
-    keyOpMSum: document.getElementById('dcalc_opMSum')
+    keyOpMSum: document.getElementById('dcalc_opMSum'),
+    keyMod: document.getElementById('dcalc_symMod')
   };
   for (var i = 0; i <= 9; i++) {
     DecimalCalculator.keys[`key${i}`] = document.getElementById(`dcalc_num${i}`);
@@ -31,11 +32,16 @@ DecimalCalculator.attachEventHandlers = () => {
     let val = i;
     DecimalCalculator.keys[key].addEventListener('click', () => DecimalCalculator.output.value += val);
   };
+  document.getElementById('dcalc_input').addEventListener('submit', form => {
+    DecimalCalculator.output.value = DecimalCalculator.opEq(DecimalCalculator.output.value);
+    form.preventDefault();
+  });
   DecimalCalculator.keys.keyDiv.addEventListener('click', () => DecimalCalculator.output.value += ' / ');
   DecimalCalculator.keys.keyMul.addEventListener('click', () => DecimalCalculator.output.value += ' * ');
   DecimalCalculator.keys.keyDot.addEventListener('click', () => DecimalCalculator.output.value += '.');
   DecimalCalculator.keys.keySub.addEventListener('click', () => DecimalCalculator.output.value += ' - ');
   DecimalCalculator.keys.keySum.addEventListener('click', () => DecimalCalculator.output.value += ' + ');
+  DecimalCalculator.keys.keyMod.addEventListener('click', () => DecimalCalculator.output.value += ' % ');
   DecimalCalculator.keys.keyOpEq.addEventListener('click', () => DecimalCalculator.output.value = DecimalCalculator.opEq(DecimalCalculator.output.value));
   DecimalCalculator.keys.keyOpC.addEventListener('click', () => DecimalCalculator.opClear());
   DecimalCalculator.keys.keyOpMR.addEventListener('click', () => DecimalCalculator.output.value += ' ' + DecimalCalculator.memory);
@@ -58,10 +64,14 @@ DecimalCalculator.attachEventHandlers = () => {
 
 DecimalCalculator.opEq = (input) => {
   try {
-    const sanitized = input.replace(/[^\d\*\+\-\/\.]/g, '');
+    console.log('-- Decimal Calculator Evaluation --');
+    console.log(`Input: ${input}`);
+    const sanitized = input.replace(/[^\d\*\+\-\%\/\.]/g, '');
     if (!sanitized)
       return '';
+    console.log(`Operation: ${sanitized}`);
     const evaluated = eval(sanitized);
+    console.log(`Evaluated: ${evaluated}`);
     return (evaluated != 0)
       ? evaluated || ''
       : 0;

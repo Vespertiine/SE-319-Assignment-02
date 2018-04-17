@@ -6,7 +6,6 @@ BinaryCalculator.bindFields = () => {
   BinaryCalculator.output = document.getElementById('bcalc_txt');
   BinaryCalculator.keys = {
     keyDiv: document.getElementById('bcalc_symDiv'),
-    keyDot: document.getElementById('bcalc_symDot'),
     keySub: document.getElementById('bcalc_symSub'),
     keySum: document.getElementById('bcalc_symSum'),
     keyMul: document.getElementById('bcalc_symMul'),
@@ -35,15 +34,20 @@ BinaryCalculator.attachEventHandlers = () => {
     let val = i;
     BinaryCalculator.keys[key].addEventListener('click', () => BinaryCalculator.output.value += val);
   }
-
+  document.getElementById('bcalc_input').addEventListener('submit', form => {
+    BinaryCalculator.output.value = BinaryCalculator.opEq(BinaryCalculator.output.value);
+    form.preventDefault();
+  });
   BinaryCalculator.keys.keyDiv.addEventListener('click', () => BinaryCalculator.output.value += ' / ');
   BinaryCalculator.keys.keyMul.addEventListener('click', () => BinaryCalculator.output.value += ' * ');
-  BinaryCalculator.keys.keyDot.addEventListener('click', () => BinaryCalculator.output.value += '.');
   BinaryCalculator.keys.keySub.addEventListener('click', () => BinaryCalculator.output.value += ' - ');
   BinaryCalculator.keys.keySum.addEventListener('click', () => BinaryCalculator.output.value += ' + ');
   BinaryCalculator.keys.keyMod.addEventListener('click', () => BinaryCalculator.output.value += ' % ');
-  BinaryCalculator.keys.keyLS.addEventListener('click', () => BinaryCalculator.output.value += ' << ');
-  BinaryCalculator.keys.keyRS.addEventListener('click', () => BinaryCalculator.output.value += ' >> ');
+  BinaryCalculator.keys.keyLS.addEventListener('click', () => BinaryCalculator.output.value = BinaryCalculator.opEq(BinaryCalculator.output.value) + '0');
+  BinaryCalculator.keys.keyRS.addEventListener('click', () => {
+    const val = '0' + BinaryCalculator.opEq(BinaryCalculator.output.value)
+    BinaryCalculator.output.value = val.substr(0, val.length - 1);
+  });
   BinaryCalculator.keys.keyAnd.addEventListener('click', () => BinaryCalculator.output.value += ' & ');
   BinaryCalculator.keys.keyOr.addEventListener('click', () => BinaryCalculator.output.value += ' | ');
   BinaryCalculator.keys.keyNot.addEventListener('click', () => BinaryCalculator.output.value += ' ~ ');
@@ -69,15 +73,22 @@ BinaryCalculator.attachEventHandlers = () => {
 
 BinaryCalculator.opEq = (input) => {
   try {
-    const sanitized = input.replace(/[^\d\*\+\-\/\.\<\>\|\~\&]/g, '').split(' ').map(s => s = parseInt(s, 2));
+    console.log('-- Binary Calculator Evaluation --');
+    console.log(`Input: ${input}`);
+    const sanitized = input.replace(/[^\d\*\+\-\/\.\|\~\&]/g, '').replace(/(\D)/g, ' $1 ').split(' ').filter(s => s.length).map(
+      s => s = /\d/.test(s)
+      ? parseInt(s, 2)
+      : s).join('');
     if (!sanitized)
       return '';
+    console.log(`Operation: ${sanitized}`);
     const evaluated = eval(sanitized);
+    console.log(`Evaluated: ${evaluated}`);
+    console.log(`Evaluated (as binary): ${evaluated.toString(2)}`);
     return (evaluated != 0)
-      ? evaluated || ''
+      ? evaluated.toString(2) || ''
       : 0;
   } catch (e) {
-    console.log(e);
     return '';
   }
 };

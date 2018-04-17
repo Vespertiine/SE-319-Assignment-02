@@ -24,15 +24,15 @@ Create two calculators based on the provided code in [ExerciseHelp](./doc/prof-h
 4. Assume that calculator will operate left to right.
 
 ### Checklist
-- [ ] File names ``calculator.js`` and ``calculatorBinary.js``.
+- [x] File names ``calculator.js`` and ``calculatorBinary.js``.
 - [x] Relative paths in all files.
 - [x] Semantic naming of objects and JavaScript functions.
 - [x] (2 pts/display, 4 pts) | Display both calculators correctly.
 - [x] (3 pts) | MR Operation: Show memory value on screen.
-- [ ] (3 pts) | MC Operation: Clear memory value.
-- [ ] (2 pts) | M+ Operation: Display gets added to memory.
-- [ ] (2 pts) | M- Operation: Display gets subtracted from memory.
-- [ ] (2 pts) | C Operation: Clear screen value and last operation ([=] will not repeat op.)
+- [x] (3 pts) | MC Operation: Clear memory value.
+- [x] (2 pts) | M+ Operation: Display gets added to memory.
+- [x] (2 pts) | M- Operation: Display gets subtracted from memory.
+- [x] (2 pts) | C Operation: Clear screen value and last operation ([=] will not repeat op.)
 - [x] Variables should not be singletons.
 
 ### Submission
@@ -89,7 +89,7 @@ Provided grammar used to parse input token:
 - [x] Perform instructions written in another language without requiring previous compilation.
 
 ### (5 pts) | Specification: Compiler
-- [ ] Perform instructions written in a compiled language.
+- [x] Perform instructions written in a compiled language.
 
 #### Example:
 **Input:** ``mul 5 sub 2 sum 7 2 9``
